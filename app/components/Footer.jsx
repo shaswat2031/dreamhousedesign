@@ -68,10 +68,10 @@ const Footer = () => {
               <div className="flex items-start gap-3 group">
                 <div className="bg-gray-700 p-2 rounded-full group-hover:bg-[#F97316] transition-colors mt-0.5">
                   <FaMapMarkerAlt className="w-5 h-5" />
-                </div>
+                </div>{" "}
                 <div className="flex-1">
                   <p className="group-hover:text-[#F97316] transition-colors">
-                    123 Construction Ave, Building City, BC 12345
+                    4, MAHAVIRDHAM SOCIETY-1, KOSAD ROAD, AMROLI, SURAT-394107
                   </p>
                 </div>
               </div>

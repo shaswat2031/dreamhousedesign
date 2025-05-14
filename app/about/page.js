@@ -170,66 +170,6 @@ export default function About() {
 
         {/* Our Journey So Far */}
 
-        {/* Meet Our Founder */}
-        <section className="py-16 px-4 md:px-8 lg:px-16">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl font-bold mb-12 text-center text-[#1F2937]">
-              Meet Our Founder
-            </h2>
-            <div className="flex justify-center">
-              <div className="max-w-md bg-white rounded-lg overflow-hidden shadow-lg">
-                <div className="relative h-80 w-full">
-                  <Image
-                    src=""
-                    alt="Dinesh Kumar"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-2xl font-semibold mb-2 text-[#1F2937]">
-                    Dinesh Kumar (D.C.E)
-                  </h3>
-                  <p className="text-[#4361EE] mb-4 font-medium">
-                    Architect & Civil Contractor
-                  </p>
-                  <p className="text-[#111827] mb-5 leading-relaxed">
-                    With over a decade of experience in architectural design and
-                    civil construction, Dinesh has led the development of more
-                    than 20 successful residential projects. His expertise lies
-                    in creating practical, beautiful spaces that reflect each
-                    client's unique vision and needs.
-                  </p>
-                  <div className="flex space-x-4">
-                    <a
-                      href="https://www.facebook.com/DREAMHOUSE-DESIGN"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[#4361EE] hover:text-[#3A0CA3]"
-                      aria-label="Facebook"
-                    >
-                      <span className="bg-[#4361EE]/10 p-2 rounded-full">
-                        FB
-                      </span>
-                    </a>
-                    <a
-                      href="https://instagram.com/DAYLORD88"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[#4361EE] hover:text-[#3A0CA3]"
-                      aria-label="Instagram"
-                    >
-                      <span className="bg-[#4361EE]/10 p-2 rounded-full">
-                        IG
-                      </span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Call to Action */}
         <section className="py-16 px-4 md:px-8 lg:px-16 bg-gradient-to-r from-[#3A0CA3] to-[#4361EE] text-white">
           <div className="max-w-3xl mx-auto text-center">

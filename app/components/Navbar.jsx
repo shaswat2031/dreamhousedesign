@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const navLinks = [
   { href: "/", label: "Home", emoji: "🏠" },
@@ -52,20 +53,26 @@ const Navbar = () => {
           href="/"
           className="flex items-center gap-2.5 group relative z-10"
         >
+          {" "}
           <div className="relative">
-            <div className="w-11 h-11 bg-gradient-to-br from-[#F72585] to-[#4CC9F0] rounded-lg flex items-center justify-center shadow-lg shadow-[#7209B7]/30 group-hover:shadow-[#F72585]/40 transition-all duration-300 group-hover:scale-105 relative overflow-hidden">
-              <span className="text-white font-black text-xl relative z-10">
-                D
-              </span>
-              <div className="absolute w-full h-full bg-gradient-to-tr from-[#F72585]/0 to-white/20 -top-10 -right-10 transform rotate-45 transition-all duration-300 group-hover:translate-x-4 group-hover:translate-y-4"></div>
+            <div className="w-11 h-11 bg-[#3A0CA3] rounded-lg flex items-center justify-center shadow-lg shadow-[#7209B7]/30 group-hover:shadow-[#F72585]/40 transition-all duration-300 group-hover:scale-105 relative overflow-hidden">
+              {" "}
+              <Image
+                src="/logo.jpg"
+                alt="DreamHouse Logo"
+                width={44}
+                height={44}
+                className="object-cover relative z-10 rounded-lg"
+              />
+              <div className="absolute w-full h-full bg-white/10 -top-10 -right-10 transform rotate-45 transition-all duration-300 group-hover:translate-x-4 group-hover:translate-y-4"></div>
             </div>
             <div className="absolute -top-1 -right-1 w-4 h-4 bg-[#E4FF1A] rounded-full border-2 border-[#3A0CA3] shadow-lg opacity-0 scale-0 transition-all duration-500 group-hover:opacity-100 group-hover:scale-100"></div>
-          </div>
+          </div>{" "}
           <div className="overflow-hidden">
             <h1 className="text-lg font-black text-white leading-none group-hover:translate-x-1 transition-transform duration-300 flex items-center">
               Dream<span className="text-[#4CC9F0]">House</span>
             </h1>
-            <span className="text-xs font-bold bg-gradient-to-r from-[#E4FF1A] to-[#F72585] bg-clip-text text-transparent group-hover:tracking-wider transition-all duration-300">
+            <span className="text-xs font-bold text-[#E4FF1A] group-hover:tracking-wider transition-all duration-300">
               DESIGN STUDIO ✨
             </span>
           </div>

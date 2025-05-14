@@ -72,7 +72,6 @@ export default function Services() {
     hidden: { y: 20, opacity: 0 },
     visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
   };
-
   // Service categories and details
   const services = {
     residential: [
@@ -80,7 +79,7 @@ export default function Services() {
         title: "Custom Home Builds",
         description:
           "Your dream home from the ground up. We build spaces that are functional, aesthetic, and uniquely YOU.",
-        image: "/custom-home.jpg",
+        image: "/Custom Home.jpg",
         features: [
           "Personalized design consultation",
           "Energy-efficient options",
@@ -92,7 +91,7 @@ export default function Services() {
         title: "Interior Redesigns",
         description:
           "Major glow-up for your space. We transform boring rooms into Instagram-worthy spots.",
-        image: "/interior-redesign.jpg",
+        image: "/Interior.jpg",
         features: [
           "Color scheme development",
           "Furniture selection",
@@ -104,7 +103,7 @@ export default function Services() {
         title: "Home Extensions",
         description:
           "Need more space? We'll size up your home with seamless additions.",
-        image: "/home-extension.jpg",
+        image: "/Home.jpg",
         features: [
           "Matching architectural style",
           "Minimal disruption",
@@ -118,7 +117,7 @@ export default function Services() {
         title: "Retail Spaces",
         description:
           "We create stores designed to showcase your brand and give customers the ultimate shopping experience.",
-        image: "/retail-space.jpg",
+        image: "/Retail.jpg",
         features: [
           "Brand-aligned design",
           "Customer flow optimization",
@@ -130,7 +129,7 @@ export default function Services() {
         title: "Office Renovations",
         description:
           "Modern, creative environments where ideas can flow and productivity thrives.",
-        image: "/office-renovation.jpg",
+        image: "/office.jpg",
         features: [
           "Collaborative spaces",
           "Ergonomic design",
@@ -142,7 +141,7 @@ export default function Services() {
         title: "Restaurant Designs",
         description:
           "Dining spaces with character. We build restaurants that serve vibes alongside the menu.",
-        image: "/restaurant-design.jpg",
+        image: "/Restaurant Designs.jpg",
         features: [
           "Atmosphere creation",
           "Kitchen efficiency",
@@ -156,7 +155,7 @@ export default function Services() {
         title: "Kitchen Renovations",
         description:
           "Transform outdated kitchens into culinary spaces you'll love.",
-        image: "/kitchen-renovation.jpg",
+        image: "/Interior.jpg",
         features: [
           "Custom cabinetry",
           "Island designs",
@@ -168,7 +167,7 @@ export default function Services() {
         title: "Bathroom Transformations",
         description:
           "Spa-worthy bathroom makeovers that feel like a personal sanctuary.",
-        image: "/bathroom-transformation.jpg",
+        image: "/Home.jpg",
         features: [
           "Luxury fixtures",
           "Tile design",
@@ -180,7 +179,7 @@ export default function Services() {
         title: "Full Home Refreshes",
         description:
           "We take what's outdated and make it modern from floor to ceiling.",
-        image: "/full-home-refresh.jpg",
+        image: "/Custom Home.jpg",
         features: [
           "Cohesive design vision",
           "Structural improvements",
@@ -612,9 +611,113 @@ export default function Services() {
         </div>
       </section>
 
-      {/* FAQ Section */}
+      {/* Team Profile Section */}
+      <section className="py-16 bg-gradient-to-b from-white to-[#F3F4F6]">
+        <div className="container mx-auto px-4">
+          <motion.div
+            className="text-center mb-10"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <span className="text-sm font-bold text-[#3A0CA3] uppercase tracking-wider px-3 py-1 bg-[#3A0CA3]/10 rounded-full">
+              Meet Our Team
+            </span>
+            <h2 className="text-3xl md:text-5xl font-extrabold mt-4 mb-6">
+              The Experts{" "}
+              <span className="bg-gradient-to-r from-[#F72585] to-[#4361EE] text-transparent bg-clip-text">
+                Behind Your Vision
+              </span>
+            </h2>
+          </motion.div>
 
-      {/* Footer */}
+          <div className="flex flex-col md:flex-row items-center gap-10">
+            <motion.div
+              className="w-full md:w-1/2"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            >
+              <div className="relative">
+                <div className="absolute -top-4 -left-4 w-full h-full border-2 border-[#3A0CA3] rounded-2xl"></div>
+                <div className="relative overflow-hidden rounded-2xl border-8 border-white shadow-xl">
+                  <Image
+                    src="/profile.jpg"
+                    alt="Team Profile"
+                    width={600}
+                    height={400}
+                    className="w-full object-cover"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                    <p className="text-white font-bold text-lg">
+                      DREAMHOUSE DESIGN TEAM
+                    </p>
+                    <p className="text-white/80">
+                      Creating spaces that inspire since 2012
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="w-full md:w-1/2"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            >
+              <h3 className="text-2xl font-bold mb-4 text-[#1F2937]">
+                Why Choose DREAMHOUSE DESIGN?
+              </h3>
+              <p className="mb-4 text-gray-600">
+                At DREAMHOUSE DESIGN, we combine creativity with technical
+                expertise to deliver exceptional architectural designs and
+                construction solutions. Our team of experienced professionals is
+                dedicated to turning your vision into reality.
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <div className="flex items-start gap-2">
+                  <div className="mt-1 text-[#F72585]">
+                    <FaCheck size={14} />
+                  </div>
+                  <p className="text-gray-700">
+                    15+ years of industry experience
+                  </p>
+                </div>
+                <div className="flex items-start gap-2">
+                  <div className="mt-1 text-[#F72585]">
+                    <FaCheck size={14} />
+                  </div>
+                  <p className="text-gray-700">Attention to every detail</p>
+                </div>
+                <div className="flex items-start gap-2">
+                  <div className="mt-1 text-[#F72585]">
+                    <FaCheck size={14} />
+                  </div>
+                  <p className="text-gray-700">Transparent communication</p>
+                </div>
+                <div className="flex items-start gap-2">
+                  <div className="mt-1 text-[#F72585]">
+                    <FaCheck size={14} />
+                  </div>
+                  <p className="text-gray-700">Quality craftsmanship</p>
+                </div>
+              </div>
+              <Link
+                href="/about"
+                className="inline-flex items-center bg-[#3A0CA3] text-white font-bold py-3 px-6 rounded-lg hover:bg-[#F72585] transition-all duration-300"
+              >
+                <span>Learn More About Us</span>
+                <FaArrowRight className="ml-2" />
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </div>
   );

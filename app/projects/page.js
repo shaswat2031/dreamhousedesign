@@ -6,13 +6,31 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import FeaturedGallery from "../components/FeaturedGallery";
+
+// Custom CSS for scrolling animations
+const scrollStyles = {
+  ".animate-scroll-left": {
+    animation: "scroll-left 60s linear infinite",
+  },
+  ".animate-scroll-right": {
+    animation: "scroll-right 60s linear infinite",
+  },
+  "@keyframes scroll-left": {
+    "0%": { transform: "translateX(0)" },
+    "100%": { transform: "translateX(-100%)" },
+  },
+  "@keyframes scroll-right": {
+    "0%": { transform: "translateX(-100%)" },
+    "100%": { transform: "translateX(0)" },
+  },
+};
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState("all");
   const [selectedProject, setSelectedProject] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const modalRef = useRef(null);
-
   // Project data - Only the three house projects
   const projects = [
     {
@@ -21,11 +39,11 @@ export default function Projects() {
       category: "residential",
       location: "Amroli",
       year: "2022",
-      image: "/tiny-house.jpg",
+      image: "/Tiny House.jpg",
       description:
         'This is the smallest house we have designed, built precisely to meet the client\'s compact requirements. The house includes 3 bedrooms with attached bathrooms, a standing balcony, a living room, and a compact kitchen smartly placed beneath the staircase. It is our first small-scale project, hence the name "Tiny House".',
       tags: ["Compact", "Space-Efficient", "Modern"],
-      gallery: ["/tiny-house-1.jpg", "/tiny-house-2.jpg", "/tiny-house-3.jpg"],
+      gallery: ["/Tiny House.jpg"],
       challenge:
         "Creating a fully functional 3-bedroom home with all amenities in a limited space without compromising on comfort or aesthetics.",
       solution:
@@ -48,15 +66,11 @@ export default function Projects() {
       category: "residential",
       location: "Mota Varachha, Surat",
       year: "2021",
-      image: "/desai-house.jpg",
+      image: "/Desai House.jpg",
       description:
         "A luxurious multi-floor residence designed with modern architectural aesthetics, featuring spacious bedrooms, designer interiors, and advanced construction techniques.",
       tags: ["Luxury", "Multi-floor", "Modern"],
-      gallery: [
-        "/desai-house-1.jpg",
-        "/desai-house-2.jpg",
-        "/desai-house-3.jpg",
-      ],
+      gallery: ["/Desai House.jpg"],
       challenge:
         "Creating a premium residential property that balances luxury with functionality while incorporating modern design elements and construction techniques.",
       solution:
@@ -79,15 +93,11 @@ export default function Projects() {
       category: "residential",
       location: "Mota Varachha, Surat",
       year: "2020",
-      image: "/maali-house.jpg",
+      image: "/MAALI  HOUSE.jpg",
       description:
         "A custom-designed residence reflecting both elegance and functionality, crafted to suit the client's family lifestyle and preferences.",
       tags: ["Custom", "Elegant", "Family-oriented"],
-      gallery: [
-        "/maali-house-1.jpg",
-        "/maali-house-2.jpg",
-        "/maali-house-3.jpg",
-      ],
+      gallery: ["/MAALI  HOUSE.jpg"],
       challenge:
         "Designing a home that perfectly balances the family's needs for both shared spaces and private areas, with special attention to ventilation and durability.",
       solution:
@@ -103,6 +113,34 @@ export default function Projects() {
       role: "Directly handled the design-to-delivery process, collaborating with subcontractors and managing quality control.",
       achievements:
         "Earned repeated business and referrals from the satisfied client. Commended for timely delivery and outstanding craftsmanship.",
+    },
+
+    {
+      id: 5,
+      title: "Sun Temple Renovation",
+      category: "heritage",
+      location: "Gujarat",
+      year: "2021",
+      image: "/Sun temple.jpg",
+      description:
+        "Careful restoration of historic elements while incorporating modern structural reinforcements to preserve this cultural landmark for future generations.",
+      tags: ["Heritage", "Restoration", "Cultural"],
+      gallery: ["/Sun temple.jpg"],
+      challenge:
+        "Balancing authentic historical preservation with necessary structural improvements and modern safety requirements.",
+      solution:
+        "Employed traditional craftsmen alongside modern engineering techniques to ensure both authenticity and structural integrity.",
+      testimonial: {
+        quote:
+          "The restoration maintained the temple's spiritual essence while ensuring its longevity. A perfect blend of respect for heritage and modern expertise.",
+        author: "Heritage Conservation Committee",
+      },
+      timeToComplete: "18 Months",
+      scope:
+        "Historical research, restoration planning, material sourcing, and implementation oversight.",
+      role: "Consultation and partial implementation of specific restoration elements.",
+      achievements:
+        "Recognized for excellence in heritage conservation, maintaining historical authenticity while improving structural stability.",
     },
   ];
 
@@ -152,12 +190,34 @@ export default function Projects() {
     hidden: { y: 10, opacity: 0 },
     visible: { y: 0, opacity: 1 },
   };
-
   return (
     <div className="min-h-screen flex flex-col bg-[#FAFAFA]">
+      <style jsx global>{`
+        @keyframes scroll-left {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        @keyframes scroll-right {
+          0% {
+            transform: translateX(-50%);
+          }
+          100% {
+            transform: translateX(0);
+          }
+        }
+        .animate-scroll-left {
+          animation: scroll-left 60s linear infinite;
+        }
+        .animate-scroll-right {
+          animation: scroll-right 60s linear infinite;
+        }
+      `}</style>
       {/* Navigation */}
       <Navbar />
-
       {/* Hero Section - Simplified with reduced animations and no emojis */}
       <section className="relative h-[50vh] md:h-[60vh] bg-gradient-to-br from-[#4361EE] via-[#3A0CA3] to-[#7209B7] flex items-center overflow-hidden">
         {/* Simplified background elements */}
@@ -207,14 +267,174 @@ export default function Projects() {
             </a>
           </motion.div>
         </div>
-      </section>
+      </section>{" "}
+      {/* Horizontal Scrolling Image Gallery */}
+      <section className="py-12 overflow-hidden bg-white">
+        <div className="container mx-auto px-4 mb-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-2">
+            Project Showcase
+          </h2>
+          <p className="text-gray-600 text-center mb-8">
+            Scroll through our latest work
+          </p>
+        </div>
 
+        <div className="relative">
+          {/* First row - scrolling left */}
+          <div className="flex gap-4 animate-scroll-left">
+            <div className="flex gap-4">
+              {[
+                "/Custom Home.jpg",
+                "/Desai House.jpg",
+                "/MAALI  HOUSE.jpg",
+                "/Tiny House.jpg",
+                "/Restaurant Designs.jpg",
+                "/Retail.jpg",
+              ].map((img, index) => (
+                <div
+                  key={`left-${index}`}
+                  className="h-60 w-80 flex-shrink-0 overflow-hidden rounded-xl"
+                >
+                  <Image
+                    src={img}
+                    alt={`Project image ${index}`}
+                    width={320}
+                    height={240}
+                    className="h-full w-full object-cover hover:scale-110 transition-transform duration-700"
+                  />
+                </div>
+              ))}
+            </div>
+            {/* Duplicate set for seamless loop */}
+            <div className="flex gap-4">
+              {[
+                "/Custom Home.jpg",
+                "/Desai House.jpg",
+                "/MAALI  HOUSE.jpg",
+                "/Tiny House.jpg",
+                "/Restaurant Designs.jpg",
+                "/Retail.jpg",
+              ].map((img, index) => (
+                <div
+                  key={`left-dup-${index}`}
+                  className="h-60 w-80 flex-shrink-0 overflow-hidden rounded-xl"
+                >
+                  <Image
+                    src={img}
+                    alt={`Project image ${index}`}
+                    width={320}
+                    height={240}
+                    className="h-full w-full object-cover hover:scale-110 transition-transform duration-700"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Second row - scrolling right */}
+          <div className="flex gap-4 mt-4 animate-scroll-right">
+            <div className="flex gap-4">
+              {[
+                "/Sun temple.jpg",
+                "/Interior.jpg",
+                "/Kitchen_Renovation.jpg",
+                "/Bathroom_Renovation.jpg",
+                "/Full_Home_Renovation.jpg",
+                "/office.jpg",
+              ].map((img, index) => (
+                <div
+                  key={`right-${index}`}
+                  className="h-60 w-80 flex-shrink-0 overflow-hidden rounded-xl"
+                >
+                  <Image
+                    src={img}
+                    alt={`Project image ${index}`}
+                    width={320}
+                    height={240}
+                    className="h-full w-full object-cover hover:scale-110 transition-transform duration-700"
+                  />
+                </div>
+              ))}
+            </div>
+            {/* Duplicate set for seamless loop */}
+            <div className="flex gap-4">
+              {[
+                "/Sun temple.jpg",
+                "/Interior.jpg",
+                "/Kitchen_Renovation.jpg",
+                "/Bathroom_Renovation.jpg",
+                "/Full_Home_Renovation.jpg",
+                "/office.jpg",
+              ].map((img, index) => (
+                <div
+                  key={`right-dup-${index}`}
+                  className="h-60 w-80 flex-shrink-0 overflow-hidden rounded-xl"
+                >
+                  <Image
+                    src={img}
+                    alt={`Project image ${index}`}
+                    width={320}
+                    height={240}
+                    className="h-full w-full object-cover hover:scale-110 transition-transform duration-700"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Gradient overlay on sides */}
+          <div className="absolute top-0 left-0 h-full w-24 bg-gradient-to-r from-white to-transparent z-10"></div>
+          <div className="absolute top-0 right-0 h-full w-24 bg-gradient-to-l from-white to-transparent z-10"></div>
+        </div>
+      </section>
       {/* Project Gallery Section */}
       <section id="project-gallery" className="py-20 bg-[#FAFAFA] relative">
         <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-white to-transparent"></div>
 
         <div className="container mx-auto px-4">
-          {/* Filter tabs - Removed emojis */}
+          {/* Filter tabs */}
+          <div className="flex justify-center gap-4 mb-12">
+            <button
+              onClick={() => setActiveFilter("all")}
+              className={`px-6 py-2 rounded-full font-bold text-sm transition-all duration-300 ${
+                activeFilter === "all"
+                  ? "bg-[#3A0CA3] text-white shadow-lg"
+                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+              }`}
+            >
+              All Projects
+            </button>
+            <button
+              onClick={() => setActiveFilter("residential")}
+              className={`px-6 py-2 rounded-full font-bold text-sm transition-all duration-300 ${
+                activeFilter === "residential"
+                  ? "bg-[#F72585] text-white shadow-lg"
+                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+              }`}
+            >
+              Residential
+            </button>
+            <button
+              onClick={() => setActiveFilter("commercial")}
+              className={`px-6 py-2 rounded-full font-bold text-sm transition-all duration-300 ${
+                activeFilter === "commercial"
+                  ? "bg-[#4CC9F0] text-white shadow-lg"
+                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+              }`}
+            >
+              Commercial
+            </button>
+            <button
+              onClick={() => setActiveFilter("heritage")}
+              className={`px-6 py-2 rounded-full font-bold text-sm transition-all duration-300 ${
+                activeFilter === "heritage"
+                  ? "bg-[#7209B7] text-white shadow-lg"
+                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+              }`}
+            >
+              Heritage
+            </button>
+          </div>
 
           {/* Projects grid - Simplified animations */}
           <motion.div
@@ -301,7 +521,6 @@ export default function Projects() {
           )}
         </div>
       </section>
-
       {/* Project Detail Modal - Simplified with enhanced project details */}
       <AnimatePresence>
         {isModalOpen && selectedProject && (
@@ -464,9 +683,10 @@ export default function Projects() {
               </div>
             </motion.div>
           </motion.div>
-        )}
+        )}{" "}
       </AnimatePresence>
-
+      {/* Featured Gallery Component */}
+      <FeaturedGallery />
       {/* Call to Action - Simplified */}
       <section className="py-16 bg-gradient-to-r from-[#4361EE] to-[#3A0CA3] relative">
         <div className="container mx-auto px-4 relative z-10">
@@ -489,7 +709,6 @@ export default function Projects() {
           </div>
         </div>
       </section>
-
       {/* Footer */}
       <Footer />
     </div>
