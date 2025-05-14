@@ -4,7 +4,6 @@ import Link from "next/link";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import about1 from "../../public/about1.jpg";
-import profile from "../../public/profile.jpg";
 
 export default function About() {
   return (
@@ -181,7 +180,7 @@ export default function About() {
               <div className="max-w-md bg-white rounded-lg overflow-hidden shadow-lg">
                 <div className="relative h-80 w-full">
                   <Image
-                    src={profile}
+                    src=""
                     alt="Dinesh Kumar"
                     fill
                     className="object-cover"
