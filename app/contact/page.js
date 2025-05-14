@@ -72,100 +72,194 @@ export default function Contact() {
 
   return (
     <main className={`min-h-screen bg-[#F3F4F6] ${poppins.className}`}>
-      <Navbar />
-
-      {/* Hero Section - Improved design */}
-      <header className="relative bg-gradient-to-r from-[#3A0CA3] via-[#4361EE] to-[#4CC9F0] py-24 text-center text-white overflow-hidden">
+      <Navbar /> {/* Enhanced Hero Section with animated elements */}
+      <header className="relative bg-gradient-to-r from-[#3A0CA3] via-[#4361EE] to-[#4CC9F0] py-28 text-center text-white overflow-hidden">
         <div className="absolute inset-0 bg-black opacity-30"></div>
         <div className="absolute inset-0 bg-[url('/hero-house.jpg')] bg-cover bg-center mix-blend-overlay opacity-30"></div>
+
+        {/* Animated decorative elements */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-white opacity-10 rounded-full transform -translate-y-1/2 translate-x-1/2 animate-pulse-slow"></div>
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-white opacity-10 rounded-full transform translate-y-1/3 -translate-x-1/3"></div>
+        <div className="absolute top-1/3 left-1/4 w-32 h-32 bg-white opacity-10 rounded-full"></div>
+
+        {/* Content with animation */}
         <div className="relative z-10 container mx-auto px-6">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
-          <p className="mt-4 max-w-2xl mx-auto text-lg text-white">
-            Ready to transform your space? Let's talk about your project.
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fadeInDown">
+            Contact Us
+          </h1>
+          <p className="mt-4 max-w-2xl mx-auto text-xl text-white animate-fadeInUp">
+            Ready to transform your space into something extraordinary?
+            <span className="block mt-2 font-light">
+              Let's bring your vision to life.
+            </span>
           </p>
+
+          {/* Quick contact buttons */}
+          <div className="flex flex-wrap justify-center gap-4 mt-8 animate-fadeInUp animation-delay-300">
+            <a
+              href="tel:+919727638760"
+              className="flex items-center bg-white/20 hover:bg-white/30 backdrop-blur-sm px-5 py-3 rounded-full transition-all duration-300 hover:scale-105"
+            >
+              <FaPhone className="mr-2" /> Call Now
+            </a>
+            <a
+              href="https://wa.me/919727638760"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center bg-[#25D366] hover:bg-[#25D366]/90 px-5 py-3 rounded-full transition-all duration-300 hover:scale-105"
+            >
+              <FaWhatsapp className="mr-2" /> WhatsApp
+            </a>
+          </div>
         </div>
       </header>
-
       {/* Main Content */}
       <section className="max-w-6xl mx-auto px-6 py-16">
         <div className="grid md:grid-cols-3 gap-8">
-          {/* Contact Information */}
+          {" "}
+          {/* Enhanced Contact Information with hover effects */}
           <div className="md:col-span-1">
-            <div className="bg-white shadow-xl rounded-xl p-8 h-full">
-              <h2 className="text-2xl font-semibold text-[#3A0CA3] mb-6">
+            <div className="bg-white shadow-2xl rounded-3xl p-8 h-full border border-gray-100 relative overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              {/* Decorative accent */}
+              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-[#3A0CA3] to-[#4361EE]"></div>
+              <div className="absolute -top-24 -right-24 w-48 h-48 bg-[#4361EE]/5 rounded-full"></div>
+              <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-[#3A0CA3]/5 rounded-full"></div>
+
+              <h2 className="text-3xl font-bold text-[#3A0CA3] mb-6 relative">
                 Get In Touch
+                <span className="block w-20 h-1 bg-[#4361EE] mt-3"></span>
               </h2>
-              <p className="text-gray-600 mb-8">
+              <p className="text-gray-600 mb-10 text-lg">
                 Have questions about our services? Need a consultation? We're
                 here to help you create your dream space.
               </p>
 
-              <div className="space-y-6">
-                <div className="flex items-center">
-                  <div className="w-10 h-10 rounded-full bg-[#4361EE]/10 flex items-center justify-center mr-4">
-                    <FaPhone className="text-[#4361EE]" />
+              <div className="space-y-8">
+                <a
+                  href="tel:+919727638760"
+                  className="contact-info-card flex items-center p-3 rounded-xl transition-all duration-300 hover:bg-[#4361EE]/5 group"
+                >
+                  <div className="w-12 h-12 rounded-full bg-[#4361EE]/10 flex items-center justify-center mr-4 shadow-md group-hover:bg-[#4361EE] group-hover:text-white transition-all duration-300">
+                    <FaPhone className="text-[#4361EE] group-hover:text-white transition-colors duration-300" />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-500">Phone</p>
-                    <p className="font-medium">+91 9727638760</p>
+                    <p className="text-sm font-medium text-gray-500 uppercase tracking-wider">
+                      Phone
+                    </p>
+                    <p className="font-semibold text-[#1F2937] group-hover:text-[#3A0CA3] transition-colors duration-300">
+                      +91 9727638760
+                    </p>
                   </div>
-                </div>
+                </a>
 
-                <div className="flex items-center">
-                  <div className="w-10 h-10 rounded-full bg-[#4361EE]/10 flex items-center justify-center mr-4">
-                    <FaEnvelope className="text-[#4361EE]" />
+                <a
+                  href="mailto:Dreamhousedesign.2017@gmail.com"
+                  className="contact-info-card flex items-center p-3 rounded-xl transition-all duration-300 hover:bg-[#4361EE]/5 group"
+                >
+                  <div className="w-12 h-12 rounded-full bg-[#4361EE]/10 flex items-center justify-center mr-4 shadow-md group-hover:bg-[#4361EE] group-hover:text-white transition-all duration-300">
+                    <FaEnvelope className="text-[#4361EE] group-hover:text-white transition-colors duration-300" />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-500">Email</p>
-                    <p className="font-medium">
+                    <p className="text-sm font-medium text-gray-500 uppercase tracking-wider">
+                      Email
+                    </p>
+                    <p className="font-semibold text-[#1F2937] group-hover:text-[#3A0CA3] transition-colors duration-300 break-all">
                       Dreamhousedesign.2017@gmail.com
                     </p>
                   </div>
-                </div>
+                </a>
 
-                <div className="flex items-center">
-                  <div className="w-10 h-10 rounded-full bg-[#4361EE]/10 flex items-center justify-center mr-4">
-                    <FaMapMarkerAlt className="text-[#4361EE]" />
+                <a
+                  href="https://maps.google.com/?q=Surat,Gujarat,India"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="contact-info-card flex items-center p-3 rounded-xl transition-all duration-300 hover:bg-[#4361EE]/5 group"
+                >
+                  <div className="w-12 h-12 rounded-full bg-[#4361EE]/10 flex items-center justify-center mr-4 shadow-md group-hover:bg-[#4361EE] group-hover:text-white transition-all duration-300">
+                    <FaMapMarkerAlt className="text-[#4361EE] group-hover:text-white transition-colors duration-300" />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-500">Address</p>
-                    <p className="font-medium">Surat, Gujarat, India</p>
+                    <p className="text-sm font-medium text-gray-500 uppercase tracking-wider">
+                      Address
+                    </p>
+                    <p className="font-semibold text-[#1F2937] group-hover:text-[#3A0CA3] transition-colors duration-300">
+                      Surat, Gujarat, India
+                    </p>
                   </div>
-                </div>
+                </a>
 
-                <div className="flex items-center">
-                  <div className="w-10 h-10 rounded-full bg-[#25D366]/10 flex items-center justify-center mr-4">
-                    <FaWhatsapp className="text-[#25D366]" />
+                <a
+                  href="https://wa.me/919727638760"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="contact-info-card flex items-center p-3 rounded-xl transition-all duration-300 hover:bg-[#25D366]/10 group"
+                >
+                  <div className="w-12 h-12 rounded-full bg-[#25D366]/10 flex items-center justify-center mr-4 shadow-md group-hover:bg-[#25D366] group-hover:text-white transition-all duration-300">
+                    <FaWhatsapp className="text-[#25D366] group-hover:text-white transition-colors duration-300" />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-500">WhatsApp</p>
-                    <p className="font-medium">+91 9727638760</p>
+                    <p className="text-sm font-medium text-gray-500 uppercase tracking-wider">
+                      WhatsApp
+                    </p>
+                    <p className="font-semibold text-[#1F2937] group-hover:text-[#25D366] transition-colors duration-300">
+                      +91 9727638760
+                    </p>
+                  </div>
+                </a>
+
+                {/* Social proof */}
+                <div className="mt-8 pt-8 border-t border-gray-100">
+                  <p className="text-sm text-center text-gray-600 mb-2">
+                    Trusted by clients across Surat
+                  </p>
+                  <div className="flex justify-center">
+                    <div className="flex -space-x-2">
+                      {[1, 2, 3, 4, 5].map((i) => (
+                        <div
+                          key={i}
+                          className={`w-8 h-8 rounded-full bg-gradient-to-r from-blue-${
+                            i * 100
+                          } to-purple-${
+                            i * 100
+                          } border-2 border-white flex items-center justify-center text-xs text-white font-bold`}
+                        >
+                          {String.fromCharCode(64 + i)}
+                        </div>
+                      ))}
+                    </div>
+                    <p className="ml-4 text-sm font-medium text-gray-700">
+                      20+ projects completed
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-          {/* Contact Form */}
+          {/* Contact Form */}{" "}
           <div className="md:col-span-2">
-            <div className="bg-white shadow-xl rounded-xl p-8">
+            <div className="bg-white shadow-2xl rounded-3xl p-8 border border-gray-100 relative overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              {/* Decorative accent */}
+              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-[#3A0CA3] to-[#4361EE]"></div>
+              <div className="absolute -top-20 -right-20 w-40 h-40 bg-[#4361EE]/5 rounded-full"></div>
+              <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-[#3A0CA3]/5 rounded-full"></div>
+
               {submitted ? (
-                <div className="text-center p-8">
-                  <div className="w-20 h-20 bg-green-100 rounded-full mx-auto flex items-center justify-center mb-6">
-                    <FaWhatsapp className="text-green-600 text-4xl" />
+                <div className="text-center p-8 animate-fadeIn">
+                  <div className="w-24 h-24 bg-green-100 rounded-full mx-auto flex items-center justify-center mb-8 shadow-lg animate-bounce-slow">
+                    <FaWhatsapp className="text-green-600 text-5xl" />
                   </div>
-                  <h2 className="text-2xl font-semibold mt-4 text-[#1F2937]">
+                  <h2 className="text-3xl font-bold mt-4 text-[#1F2937]">
                     Message Sent Successfully!
                   </h2>
-                  <p className="text-gray-600 mt-2 mb-6">
+                  <p className="text-gray-600 mt-4 mb-8 text-lg max-w-md mx-auto">
                     Thank you for contacting us. Your message has been
                     redirected to our WhatsApp. Our team will respond to you
                     shortly.
                   </p>
-                  <div className="flex gap-4 justify-center">
+                  <div className="flex flex-wrap gap-4 justify-center">
                     <button
                       onClick={() => setSubmitted(false)}
-                      className="bg-[#4361EE] text-white px-6 py-2 rounded-md hover:bg-[#3A0CA3] transition-colors"
+                      className="bg-[#4361EE] text-white px-8 py-3 rounded-full hover:bg-[#3A0CA3] transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-transform duration-300"
                     >
                       Send Another Message
                     </button>
@@ -173,7 +267,7 @@ export default function Contact() {
                       href="https://wa.me/919727638760"
                       target="_blank"
                       rel="noreferrer"
-                      className="bg-[#25D366] text-white px-6 py-2 rounded-md hover:bg-opacity-90 transition-colors flex items-center"
+                      className="bg-[#25D366] text-white px-8 py-3 rounded-full hover:bg-opacity-90 transition-colors flex items-center shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-transform duration-300"
                     >
                       <FaWhatsapp className="mr-2" /> Chat on WhatsApp
                     </a>
@@ -181,13 +275,15 @@ export default function Contact() {
                 </div>
               ) : (
                 <>
-                  <h2 className="text-2xl font-semibold text-[#3A0CA3] mb-8">
+                  <h2 className="text-3xl font-bold text-[#3A0CA3] mb-8 relative">
                     Send Us a Message
+                    <span className="block w-20 h-1 bg-[#4361EE] mt-3"></span>
                   </h2>
-                  <form onSubmit={handleSubmit} className="space-y-6">
+
+                  <form onSubmit={handleSubmit} className="space-y-7">
                     <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <label className="block text-gray-700 mb-2 font-medium">
+                      <div className="form-group relative">
+                        <label className="block text-gray-700 mb-2 font-medium text-sm uppercase tracking-wider">
                           Your Name
                         </label>
                         <input
@@ -196,12 +292,12 @@ export default function Contact() {
                           value={formData.name}
                           onChange={handleChange}
                           required
-                          className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#4361EE] focus:border-transparent"
+                          className="w-full border border-gray-200 bg-gray-50/50 rounded-xl px-4 py-4 focus:outline-none focus:ring-2 focus:ring-[#4361EE] focus:border-transparent focus:bg-white transition-all duration-300"
                           placeholder="John Doe"
                         />
                       </div>
-                      <div>
-                        <label className="block text-gray-700 mb-2 font-medium">
+                      <div className="form-group relative">
+                        <label className="block text-gray-700 mb-2 font-medium text-sm uppercase tracking-wider">
                           Phone Number
                         </label>
                         <input
@@ -210,14 +306,13 @@ export default function Contact() {
                           value={formData.phone}
                           onChange={handleChange}
                           required
-                          className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#4361EE] focus:border-transparent"
+                          className="w-full border border-gray-200 bg-gray-50/50 rounded-xl px-4 py-4 focus:outline-none focus:ring-2 focus:ring-[#4361EE] focus:border-transparent focus:bg-white transition-all duration-300"
                           placeholder="Your WhatsApp number"
                         />
                       </div>
                     </div>
-
-                    <div>
-                      <label className="block text-gray-700 mb-2 font-medium">
+                    <div className="form-group relative">
+                      <label className="block text-gray-700 mb-2 font-medium text-sm uppercase tracking-wider">
                         Email Address
                       </label>
                       <input
@@ -226,36 +321,101 @@ export default function Contact() {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#4361EE] focus:border-transparent"
+                        className="w-full border border-gray-200 bg-gray-50/50 rounded-xl px-4 py-4 focus:outline-none focus:ring-2 focus:ring-[#4361EE] focus:border-transparent focus:bg-white transition-all duration-300"
                         placeholder="your@email.com"
                       />
-                    </div>
-
-                    <div>
-                      <label className="block text-gray-700 mb-2 font-medium">
+                    </div>{" "}
+                    <div className="form-group relative">
+                      <label className="block text-gray-700 mb-2 font-medium text-sm uppercase tracking-wider">
                         Service Interested In
                       </label>
-                      <select
-                        name="service"
-                        value={formData.service}
-                        onChange={handleChange}
-                        className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#4361EE] focus:border-transparent"
-                      >
-                        <option value="General Inquiry">General Inquiry</option>
-                        <option value="Residential Design">
-                          Residential Design
-                        </option>
-                        <option value="Commercial Design">
-                          Commercial Design
-                        </option>
-                        <option value="Interior Design">Interior Design</option>
-                        <option value="Renovation">Renovation</option>
-                        <option value="Consulting">Consulting</option>
-                      </select>
+                      <div className="relative">
+                        <select
+                          name="service"
+                          value={formData.service}
+                          onChange={handleChange}
+                          className="w-full border border-gray-200 bg-gradient-to-r from-gray-50/80 to-white/90 rounded-xl px-4 py-4 focus:outline-none focus:ring-2 focus:ring-[#4361EE] focus:border-transparent focus:bg-gradient-to-r focus:from-white focus:to-[#4361EE]/5 transition-all duration-300 appearance-none cursor-pointer hover:shadow-md text-gray-700"
+                        >
+                          <option
+                            value="General Inquiry"
+                            className="bg-white text-gray-700 hover:bg-[#4361EE]/5"
+                          >
+                            General Inquiry
+                          </option>
+                          <option
+                            value="Residential Design"
+                            className="bg-white text-gray-700 hover:bg-[#4361EE]/5"
+                          >
+                            Residential Design
+                          </option>{" "}
+                          <option
+                            value="Commercial Design"
+                            className="bg-white text-gray-700 hover:bg-[#4361EE]/5"
+                          >
+                            Commercial Design
+                          </option>
+                          <option
+                            value="Interior Design"
+                            className="bg-white text-gray-700 hover:bg-[#4361EE]/5"
+                          >
+                            Interior Design
+                          </option>
+                          <option
+                            value="Renovation"
+                            className="bg-white text-gray-700 hover:bg-[#4361EE]/5"
+                          >
+                            Renovation
+                          </option>
+                          <option
+                            value="Landscape Design"
+                            className="bg-white text-gray-700 hover:bg-[#4361EE]/5"
+                          >
+                            Landscape Design
+                          </option>
+                          <option
+                            value="3D Visualization"
+                            className="bg-white text-gray-700 hover:bg-[#4361EE]/5"
+                          >
+                            3D Visualization
+                          </option>
+                          <option
+                            value="Furniture Design"
+                            className="bg-white text-gray-700 hover:bg-[#4361EE]/5"
+                          >
+                            Furniture Design
+                          </option>
+                          <option
+                            value="Smart Home Integration"
+                            className="bg-white text-gray-700 hover:bg-[#4361EE]/5"
+                          >
+                            Smart Home Integration
+                          </option>
+                          <option
+                            value="Consulting"
+                            className="bg-white text-gray-700 hover:bg-[#4361EE]/5"
+                          >
+                            Consulting
+                          </option>
+                        </select>
+                        {/* Custom select arrow */}
+                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-[#4361EE] bg-gradient-to-l from-[#4361EE]/10 to-transparent h-full rounded-r-xl">
+                          <svg
+                            className="h-5 w-5"
+                            fill="none"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path d="M19 9l-7 7-7-7"></path>
+                          </svg>
+                        </div>
+                      </div>
                     </div>
-
-                    <div>
-                      <label className="block text-gray-700 mb-2 font-medium">
+                    <div className="form-group relative">
+                      {" "}
+                      <label className="block text-gray-700 mb-2 font-medium text-sm uppercase tracking-wider">
                         Your Message
                       </label>
                       <textarea
@@ -264,32 +424,58 @@ export default function Contact() {
                         onChange={handleChange}
                         rows={5}
                         required
-                        className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#4361EE] focus:border-transparent"
+                        className="w-full border border-gray-200 bg-gradient-to-br from-blue-50/30 to-purple-50/30 rounded-xl px-4 py-4 focus:outline-none focus:ring-2 focus:ring-[#4361EE] focus:border-transparent focus:bg-gradient-to-r focus:from-white focus:to-[#4361EE]/5 hover:shadow-md transition-all duration-300 font-black text-blue-500"
                         placeholder="Tell us about your project..."
+                        style={{
+                          boxShadow: "inset 0 2px 4px rgba(0,0,0,0.03)",
+                          borderColor: "#e2e8f0",
+                        }}
                       />
                     </div>
-
                     <button
                       type="submit"
                       disabled={loading}
-                      className={`flex items-center justify-center w-full bg-gradient-to-r from-[#3A0CA3] to-[#4361EE] text-white py-3 rounded-lg font-medium transition-all ${
+                      className={`flex items-center justify-center w-full bg-gradient-to-r from-[#3A0CA3] to-[#4361EE] text-white py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-md ${
                         loading
                           ? "opacity-70 cursor-not-allowed"
-                          : "hover:from-[#4361EE] hover:to-[#3A0CA3] hover:shadow-lg"
+                          : "hover:from-[#4361EE] hover:to-[#3A0CA3] hover:shadow-lg transform hover:-translate-y-1"
                       }`}
                     >
                       {loading ? (
-                        "Sending..."
+                        <>
+                          <svg
+                            className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                          >
+                            <circle
+                              className="opacity-25"
+                              cx="12"
+                              cy="12"
+                              r="10"
+                              stroke="currentColor"
+                              strokeWidth="4"
+                            ></circle>
+                            <path
+                              className="opacity-75"
+                              fill="currentColor"
+                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                            ></path>
+                          </svg>
+                          Sending...
+                        </>
                       ) : (
                         <>
-                          <FaWhatsapp className="mr-2" /> Send via WhatsApp
+                          <FaWhatsapp className="mr-2 text-xl" /> Send via
+                          WhatsApp
                         </>
                       )}
                     </button>
-
-                    <p className="text-sm text-gray-500 text-center mt-4">
+                    <p className="text-sm text-gray-500 text-center mt-6 px-6">
                       By submitting, your message will be sent directly to our
-                      WhatsApp for faster response.
+                      WhatsApp for faster response. We typically respond within
+                      24 hours.
                     </p>
                   </form>
                 </>
@@ -305,7 +491,7 @@ export default function Contact() {
           </h3>
           <div className="aspect-[16/9] w-full">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119066.41403602112!2d72.72651687475417!3d21.15927952595315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04e59411d1563%3A0xfe4558290938b042!2sSurat%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1683362010871!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3718.848588805657!2d72.84837131075928!3d21.237851880482793!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04fe7bf51786d%3A0x844944836a89d6d!2sDreem%20house!5e0!3m2!1sen!2sin!4v1747245026763!5m2!1sen!2sin"
               width="100%"
               height="100%"
               style={{ border: 0, borderRadius: "0.5rem" }}
@@ -316,7 +502,6 @@ export default function Contact() {
           </div>
         </div>
       </section>
-
       <Footer />
     </main>
   );
