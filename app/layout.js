@@ -16,35 +16,35 @@ export const metadata = {
   description:
     "Transform your space with DreamHouse Design Studio. We offer premium residential, commercial, and interior design services in Surat, Gujarat.",
   icons: {
-    icon: { url: '/icon.png', type: 'image/png' },
-    shortcut: { url: '/icon.png', type: 'image/png' },
-    apple: { url: '/apple-icon.png', type: 'image/png' },
+    icon: { url: "/icon.png", type: "image/png" },
+    shortcut: { url: "/icon.png", type: "image/png" },
+    apple: { url: "/apple-icon.png", type: "image/png" },
     other: {
-      rel: 'apple-touch-icon-precomposed',
-      url: '/apple-icon.png',
+      rel: "apple-touch-icon-precomposed",
+      url: "/apple-icon.png",
     },
   },
-  manifest: '/manifest.json',
+  manifest: "/manifest.json",
   openGraph: {
-    title: 'DreamHouse Design - Interior & Architectural Design Studio',
-    description: 'Transform your space with premium design services',
-    url: 'https://dreamhousedesign.com',
-    siteName: 'DreamHouse Design',
+    title: "DreamHouse Design - Interior & Architectural Design Studio",
+    description: "Transform your space with premium design services",
+    url: "https://dreamhousedesign.com",
+    siteName: "DreamHouse Design",
     images: [
       {
-        url: '/opengraph-image.png',
+        url: "/opengraph-image.png",
         width: 1200,
         height: 630,
       },
     ],
-    locale: 'en_US',
-    type: 'website',
+    locale: "en_US",
+    type: "website",
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'DreamHouse Design - Interior & Architectural Design Studio',
-    description: 'Transform your space with premium design services',
-    images: ['/opengraph-image.png'],
+    card: "summary_large_image",
+    title: "DreamHouse Design - Interior & Architectural Design Studio",
+    description: "Transform your space with premium design services",
+    images: ["/opengraph-image.png"],
   },
 };
 
