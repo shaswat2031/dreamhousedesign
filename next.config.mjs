@@ -4,9 +4,8 @@ const nextConfig = {
     domains: ["dreamhousedesign-steel.vercel.app"],
     unoptimized: process.env.NODE_ENV !== "production",
   },
-  // Next.js 15.x doesn't support experimental.images.allowFutureImage
   experimental: {
-    // Remove the images property as it's not supported in this format
+    // Next.js 15.x experimental features if needed
   },
 };
 
