@@ -26,25 +26,46 @@ export const metadata = {
   },
   manifest: "/manifest.json",
   openGraph: {
-    title: "DreamHouse Design - Interior & Architectural Design Studio",
-    description: "Transform your space with premium design services",
-    url: "https://dreamhousedesign.com",
+    title: "DreamHouse Design - Premium Architectural & Interior Design Studio",
+    description:
+      "Transform your living spaces with our expert architectural and interior design services. From concept to completion, we bring your dream home to life with innovative solutions, quality craftsmanship, and personalized attention.",
+    url: "https://dreamhousedesign-steel.vercel.app/",
     siteName: "DreamHouse Design",
     images: [
       {
         url: "/logo.jpg",
         width: 500,
         height: 500,
+        alt: "DreamHouse Design Logo",
+      },
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "DreamHouse Design Projects Showcase",
       },
     ],
     locale: "en_US",
     type: "website",
+    countryName: "India",
+    emails: ["Dreamhousedesign.2017@gmail.com"],
+    phoneNumbers: ["+91 9727638760"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "DreamHouse Design - Interior & Architectural Design Studio",
-    description: "Transform your space with premium design services",
-    images: ["/logo.jpg"],
+    title: "DreamHouse Design - Where Dreams Become Reality",
+    description:
+      "Award-winning architectural & interior design services in Surat. Transform your space with our expert team. Residential, commercial & renovation projects.",
+    images: [
+      {
+        url: "/twitter-card.jpg",
+        alt: "DreamHouse Design Portfolio",
+        width: 1200,
+        height: 628,
+      },
+    ],
+    creator: "@dreamhousedesign",
+    site: "@dreamhousedesign",
   },
 };
 
