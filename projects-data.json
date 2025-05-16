@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "title": "Tiny House",
+    "category": "residential",
+    "location": "Amroli",
+    "year": "2022",
+    "image": "./public/Tiny House.jpg",
+    "description": "This is the smallest house we have designed, built precisely to meet the client's compact requirements. The house includes 3 bedrooms with attached bathrooms, a standing balcony, a living room, and a compact kitchen smartly placed beneath the staircase. It is our first small-scale project, hence the name \"Tiny House\".",
+    "tags": [
+      "Compact",
+      "Space-Efficient",
+      "Modern"
+    ],
+    "gallery": [
+      "./public/Tiny House.jpg"
+    ],
+    "challenge": "Creating a fully functional 3-bedroom home with all amenities in a limited space without compromising on comfort or aesthetics.",
+    "solution": "We implemented innovative space optimization techniques such as placing the kitchen beneath the staircase, designing multi-functional areas, and using smart storage solutions throughout the home.",
+    "testimonial": {
+      "quote": "We never thought our small plot could accommodate so much functionality. DreamHouse Design understood our needs perfectly and created a home that feels spacious despite its compact size.",
+      "author": "Tiny House Client"
+    },
+    "timeToComplete": "3 Months",
+    "scope": "Design and execution of a fully functional, compact residential home with space optimization and personalized architecture.",
+    "role": "We worked closely with the client to understand their minimal yet practical requirements and turned their dream into reality.",
+    "achievements": "The client and their family were extremely satisfied. Neighbors and the community also appreciated our innovative small-space design."
+  },
+  {
+    "id": 2,
+    "title": "DESAI HOUSE",
+    "category": "residential",
+    "location": "Mota Varachha, Surat",
+    "year": "2021",
+    "image": "./public/Desai House.jpg",
+    "description": "A luxurious multi-floor residence designed with modern architectural aesthetics, featuring spacious bedrooms, designer interiors, and advanced construction techniques.",
+    "tags": [
+      "Luxury",
+      "Multi-floor",
+      "Modern"
+    ],
+    "gallery": [
+      "./public/Desai House.jpg"
+    ],
+    "challenge": "Creating a premium residential property that balances luxury with functionality while incorporating modern design elements and construction techniques.",
+    "solution": "We developed a comprehensive architectural plan that maximized space utilization, incorporated high-end materials, and implemented advanced construction methods to ensure durability and aesthetic appeal.",
+    "testimonial": {
+      "quote": "The DreamHouse team delivered beyond our expectations. Our home is not just beautiful but also perfectly functional for our lifestyle. The attention to detail is impressive.",
+      "author": "Desai Family"
+    },
+    "timeToComplete": "2 Years",
+    "scope": "Complete architectural planning, structural development, and project execution from foundation to finishing.",
+    "role": "Led the entire project — from blueprint designing, team coordination, to material sourcing and execution oversight.",
+    "achievements": "Delivered a premium-quality home that exceeded client expectations; featured in a local architectural showcase."
+  },
+  {
+    "id": 3,
+    "title": "MAALI HOUSE",
+    "category": "residential",
+    "location": "Mota Varachha, Surat",
+    "year": "2020",
+    "image": "./public/MAALI  HOUSE.jpg",
+    "description": "A custom-designed residence reflecting both elegance and functionality, crafted to suit the client's family lifestyle and preferences.",
+    "tags": [
+      "Custom",
+      "Elegant",
+      "Family-oriented"
+    ],
+    "gallery": [
+      "./public/MAALI  HOUSE.jpg"
+    ],
+    "challenge": "Designing a home that perfectly balances the family's needs for both shared spaces and private areas, with special attention to ventilation and durability.",
+    "solution": "We created a design that incorporated ample natural light, strategic room placement for optimal ventilation, and durable materials that would stand the test of time while maintaining aesthetic appeal.",
+    "testimonial": {
+      "quote": "DreamHouse understood exactly what our family needed. The home they designed fits our lifestyle perfectly, and the quality of construction is excellent. We've already recommended them to several friends.",
+      "author": "Maali Family"
+    },
+    "timeToComplete": "1.5 Years",
+    "scope": "Full-scale design, civil construction, and interior coordination. Emphasis on ventilation, space, and durability.",
+    "role": "Directly handled the design-to-delivery process, collaborating with subcontractors and managing quality control.",
+    "achievements": "Earned repeated business and referrals from the satisfied client. Commended for timely delivery and outstanding craftsmanship."
+  },
+  {
+    "id": 5,
+    "title": "Sun Temple Renovation",
+    "category": "heritage",
+    "location": "Gujarat",
+    "year": "2021",
+    "image": "./public/Sun temple.jpg",
+    "description": "Careful restoration of historic elements while incorporating modern structural reinforcements to preserve this cultural landmark for future generations.",
+    "tags": [
+      "Heritage",
+      "Restoration",
+      "Cultural"
+    ],
+    "gallery": [
+      "./public/Sun temple.jpg"
+    ],
+    "challenge": "Balancing authentic historical preservation with necessary structural improvements and modern safety requirements.",
+    "solution": "Employed traditional craftsmen alongside modern engineering techniques to ensure both authenticity and structural integrity.",
+    "testimonial": {
+      "quote": "The restoration maintained the temple's spiritual essence while ensuring its longevity. A perfect blend of respect for heritage and modern expertise.",
+      "author": "Heritage Conservation Committee"
+    },
+    "timeToComplete": "18 Months",
+    "scope": "Historical research, restoration planning, material sourcing, and implementation oversight.",
+    "role": "Consultation and partial implementation of specific restoration elements.",
+    "achievements": "Recognized for excellence in heritage conservation, maintaining historical authenticity while improving structural stability."
+  }
+]

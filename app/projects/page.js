@@ -30,119 +30,37 @@ export default function Projects() {
   const [activeFilter, setActiveFilter] = useState("all");
   const [selectedProject, setSelectedProject] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const modalRef = useRef(null);
-  // Project data - Only the three house projects
-  const projects = [
-    {
-      id: 1,
-      title: "Tiny House",
-      category: "residential",
-      location: "Amroli",
-      year: "2022",
-      image: "/Tiny House.jpg",
-      description:
-        'This is the smallest house we have designed, built precisely to meet the client\'s compact requirements. The house includes 3 bedrooms with attached bathrooms, a standing balcony, a living room, and a compact kitchen smartly placed beneath the staircase. It is our first small-scale project, hence the name "Tiny House".',
-      tags: ["Compact", "Space-Efficient", "Modern"],
-      gallery: ["/Tiny House.jpg"],
-      challenge:
-        "Creating a fully functional 3-bedroom home with all amenities in a limited space without compromising on comfort or aesthetics.",
-      solution:
-        "We implemented innovative space optimization techniques such as placing the kitchen beneath the staircase, designing multi-functional areas, and using smart storage solutions throughout the home.",
-      testimonial: {
-        quote:
-          "We never thought our small plot could accommodate so much functionality. DreamHouse Design understood our needs perfectly and created a home that feels spacious despite its compact size.",
-        author: "Tiny House Client",
-      },
-      timeToComplete: "3 Months",
-      scope:
-        "Design and execution of a fully functional, compact residential home with space optimization and personalized architecture.",
-      role: "We worked closely with the client to understand their minimal yet practical requirements and turned their dream into reality.",
-      achievements:
-        "The client and their family were extremely satisfied. Neighbors and the community also appreciated our innovative small-space design.",
-    },
-    {
-      id: 2,
-      title: "DESAI HOUSE",
-      category: "residential",
-      location: "Mota Varachha, Surat",
-      year: "2021",
-      image: "/Desai House.jpg",
-      description:
-        "A luxurious multi-floor residence designed with modern architectural aesthetics, featuring spacious bedrooms, designer interiors, and advanced construction techniques.",
-      tags: ["Luxury", "Multi-floor", "Modern"],
-      gallery: ["/Desai House.jpg"],
-      challenge:
-        "Creating a premium residential property that balances luxury with functionality while incorporating modern design elements and construction techniques.",
-      solution:
-        "We developed a comprehensive architectural plan that maximized space utilization, incorporated high-end materials, and implemented advanced construction methods to ensure durability and aesthetic appeal.",
-      testimonial: {
-        quote:
-          "The DreamHouse team delivered beyond our expectations. Our home is not just beautiful but also perfectly functional for our lifestyle. The attention to detail is impressive.",
-        author: "Desai Family",
-      },
-      timeToComplete: "2 Years",
-      scope:
-        "Complete architectural planning, structural development, and project execution from foundation to finishing.",
-      role: "Led the entire project — from blueprint designing, team coordination, to material sourcing and execution oversight.",
-      achievements:
-        "Delivered a premium-quality home that exceeded client expectations; featured in a local architectural showcase.",
-    },
-    {
-      id: 3,
-      title: "MAALI HOUSE",
-      category: "residential",
-      location: "Mota Varachha, Surat",
-      year: "2020",
-      image: "/MAALI  HOUSE.jpg",
-      description:
-        "A custom-designed residence reflecting both elegance and functionality, crafted to suit the client's family lifestyle and preferences.",
-      tags: ["Custom", "Elegant", "Family-oriented"],
-      gallery: ["/MAALI  HOUSE.jpg"],
-      challenge:
-        "Designing a home that perfectly balances the family's needs for both shared spaces and private areas, with special attention to ventilation and durability.",
-      solution:
-        "We created a design that incorporated ample natural light, strategic room placement for optimal ventilation, and durable materials that would stand the test of time while maintaining aesthetic appeal.",
-      testimonial: {
-        quote:
-          "DreamHouse understood exactly what our family needed. The home they designed fits our lifestyle perfectly, and the quality of construction is excellent. We've already recommended them to several friends.",
-        author: "Maali Family",
-      },
-      timeToComplete: "1.5 Years",
-      scope:
-        "Full-scale design, civil construction, and interior coordination. Emphasis on ventilation, space, and durability.",
-      role: "Directly handled the design-to-delivery process, collaborating with subcontractors and managing quality control.",
-      achievements:
-        "Earned repeated business and referrals from the satisfied client. Commended for timely delivery and outstanding craftsmanship.",
-    },
 
-    {
-      id: 5,
-      title: "Sun Temple Renovation",
-      category: "heritage",
-      location: "Gujarat",
-      year: "2021",
-      image: "/Sun temple.jpg",
-      description:
-        "Careful restoration of historic elements while incorporating modern structural reinforcements to preserve this cultural landmark for future generations.",
-      tags: ["Heritage", "Restoration", "Cultural"],
-      gallery: ["/Sun temple.jpg"],
-      challenge:
-        "Balancing authentic historical preservation with necessary structural improvements and modern safety requirements.",
-      solution:
-        "Employed traditional craftsmen alongside modern engineering techniques to ensure both authenticity and structural integrity.",
-      testimonial: {
-        quote:
-          "The restoration maintained the temple's spiritual essence while ensuring its longevity. A perfect blend of respect for heritage and modern expertise.",
-        author: "Heritage Conservation Committee",
-      },
-      timeToComplete: "18 Months",
-      scope:
-        "Historical research, restoration planning, material sourcing, and implementation oversight.",
-      role: "Consultation and partial implementation of specific restoration elements.",
-      achievements:
-        "Recognized for excellence in heritage conservation, maintaining historical authenticity while improving structural stability.",
-    },
-  ];
+  // Add state for fullscreen image view
+  const [fullscreenImage, setFullscreenImage] = useState(null);
+  const [showFullscreen, setShowFullscreen] = useState(false);
+
+  useEffect(() => {
+    async function fetchProjects() {
+      try {
+        setLoading(true);
+        const response = await fetch("/api/projects");
+
+        if (!response.ok) {
+          throw new Error(`API responded with status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setProjects(data);
+        setLoading(false);
+      } catch (err) {
+        console.error("Error fetching projects:", err);
+        setError("Failed to load projects. Please try again later.");
+        setLoading(false);
+      }
+    }
+
+    fetchProjects();
+  }, []);
 
   useEffect(() => {
     // Handle click outside of modal to close it
@@ -177,6 +95,20 @@ export default function Projects() {
     document.body.style.overflow = "unset"; // Re-enable scrolling
   };
 
+  // Function to open fullscreen image
+  const openFullscreenImage = (event, imageSrc) => {
+    event.stopPropagation(); // Prevent triggering parent click events
+    setFullscreenImage(imageSrc);
+    setShowFullscreen(true);
+    document.body.style.overflow = "hidden"; // Prevent scrolling
+  };
+
+  // Function to close fullscreen image
+  const closeFullscreenImage = () => {
+    setShowFullscreen(false);
+    document.body.style.overflow = "unset"; // Re-enable scrolling
+  };
+
   // Simplified animation variants with reduced motion
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -190,6 +122,7 @@ export default function Projects() {
     hidden: { y: 10, opacity: 0 },
     visible: { y: 0, opacity: 1 },
   };
+
   return (
     <div className="min-h-screen flex flex-col bg-[#FAFAFA]">
       <style jsx global>{`
@@ -293,7 +226,8 @@ export default function Projects() {
               ].map((img, index) => (
                 <div
                   key={`left-${index}`}
-                  className="h-60 w-80 flex-shrink-0 overflow-hidden rounded-xl"
+                  className="h-60 w-80 flex-shrink-0 overflow-hidden rounded-xl cursor-pointer relative group"
+                  onClick={(e) => openFullscreenImage(e, img)}
                 >
                   <Image
                     src={img}
@@ -302,6 +236,24 @@ export default function Projects() {
                     height={240}
                     className="h-full w-full object-cover hover:scale-110 transition-transform duration-700"
                   />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <div className="bg-white/80 backdrop-blur-sm p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6 text-gray-800"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
@@ -317,7 +269,8 @@ export default function Projects() {
               ].map((img, index) => (
                 <div
                   key={`left-dup-${index}`}
-                  className="h-60 w-80 flex-shrink-0 overflow-hidden rounded-xl"
+                  className="h-60 w-80 flex-shrink-0 overflow-hidden rounded-xl cursor-pointer relative group"
+                  onClick={(e) => openFullscreenImage(e, img)}
                 >
                   <Image
                     src={img}
@@ -326,6 +279,24 @@ export default function Projects() {
                     height={240}
                     className="h-full w-full object-cover hover:scale-110 transition-transform duration-700"
                   />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <div className="bg-white/80 backdrop-blur-sm p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6 text-gray-800"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
@@ -344,7 +315,8 @@ export default function Projects() {
               ].map((img, index) => (
                 <div
                   key={`right-${index}`}
-                  className="h-60 w-80 flex-shrink-0 overflow-hidden rounded-xl"
+                  className="h-60 w-80 flex-shrink-0 overflow-hidden rounded-xl cursor-pointer relative group"
+                  onClick={(e) => openFullscreenImage(e, img)}
                 >
                   <Image
                     src={img}
@@ -353,6 +325,24 @@ export default function Projects() {
                     height={240}
                     className="h-full w-full object-cover hover:scale-110 transition-transform duration-700"
                   />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <div className="bg-white/80 backdrop-blur-sm p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6 text-gray-800"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
@@ -368,7 +358,8 @@ export default function Projects() {
               ].map((img, index) => (
                 <div
                   key={`right-dup-${index}`}
-                  className="h-60 w-80 flex-shrink-0 overflow-hidden rounded-xl"
+                  className="h-60 w-80 flex-shrink-0 overflow-hidden rounded-xl cursor-pointer relative group"
+                  onClick={(e) => openFullscreenImage(e, img)}
                 >
                   <Image
                     src={img}
@@ -377,6 +368,24 @@ export default function Projects() {
                     height={240}
                     className="h-full w-full object-cover hover:scale-110 transition-transform duration-700"
                   />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <div className="bg-white/80 backdrop-blur-sm p-2 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6 text-gray-800"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
@@ -436,74 +445,97 @@ export default function Projects() {
             </button>
           </div>
 
-          {/* Projects grid - Simplified animations */}
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-          >
-            <AnimatePresence>
-              {filteredProjects.map((project) => (
-                <motion.div
-                  key={project.id}
-                  className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer group"
-                  onClick={() => openModal(project)}
-                  variants={itemVariants}
-                  whileHover={{ y: -5 }}
-                  layout
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="h-64 relative overflow-hidden">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
+          {/* Loading state */}
+          {loading && (
+            <div className="flex justify-center items-center py-20">
+              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#4361EE]"></div>
+            </div>
+          )}
 
-                    <div className="absolute bottom-4 right-4 flex gap-1">
-                      {project.tags.map((tag, index) => (
-                        <span
-                          key={index}
-                          className="bg-white/80 backdrop-blur-sm text-xs font-bold py-1 px-2 rounded-full text-black"
-                        >
-                          {tag}
-                        </span>
-                      ))}
+          {/* Error state */}
+          {error && (
+            <div className="text-center py-20">
+              <div className="text-red-500 text-xl font-bold mb-4">{error}</div>
+              <button
+                onClick={() => window.location.reload()}
+                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+              >
+                Retry
+              </button>
+            </div>
+          )}
+
+          {/* Projects grid - Only show when not loading and no errors */}
+          {!loading && !error && (
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+            >
+              <AnimatePresence>
+                {filteredProjects.map((project) => (
+                  <motion.div
+                    key={project.id}
+                    className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer group"
+                    onClick={() => openModal(project)}
+                    variants={itemVariants}
+                    whileHover={{ y: -5 }}
+                    layout
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="h-64 relative overflow-hidden">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
+
+                      <div className="absolute bottom-4 right-4 flex gap-1">
+                        {project.tags &&
+                          project.tags.map((tag, index) => (
+                            <span
+                              key={index}
+                              className="bg-white/80 backdrop-blur-sm text-xs font-bold py-1 px-2 rounded-full text-black"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="p-6">
-                    <h3 className="text-xl font-extrabold mb-1 text-[#1F2937] group-hover:text-[#4361EE] transition-colors">
-                      {project.title}
-                    </h3>
-                    <div className="flex items-center gap-2 mb-3 text-sm text-gray-600">
-                      <span>{project.location}</span>
-                      <span className="w-1 h-1 bg-gray-400 rounded-full"></span>
-                      <span>{project.year}</span>
-                      {project.timeToComplete && (
-                        <>
-                          <span className="w-1 h-1 bg-gray-400 rounded-full"></span>
-                          <span>{project.timeToComplete}</span>
-                        </>
-                      )}
+                    <div className="p-6">
+                      <h3 className="text-xl font-extrabold mb-1 text-[#1F2937] group-hover:text-[#4361EE] transition-colors">
+                        {project.title}
+                      </h3>
+                      <div className="flex items-center gap-2 mb-3 text-sm text-gray-600">
+                        <span>{project.location}</span>
+                        <span className="w-1 h-1 bg-gray-400 rounded-full"></span>
+                        <span>{project.year}</span>
+                        {project.timeToComplete && (
+                          <>
+                            <span className="w-1 h-1 bg-gray-400 rounded-full"></span>
+                            <span>{project.timeToComplete}</span>
+                          </>
+                        )}
+                      </div>
+                      <p className="text-gray-600 line-clamp-2">
+                        {project.description}
+                      </p>
                     </div>
-                    <p className="text-gray-600 line-clamp-2">
-                      {project.description}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </motion.div>
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </motion.div>
+          )}
 
-          {filteredProjects.length === 0 && (
+          {!loading && !error && filteredProjects.length === 0 && (
             <div className="text-center py-20">
               <motion.div
                 initial={{ opacity: 0 }}
@@ -521,7 +553,7 @@ export default function Projects() {
           )}
         </div>
       </section>
-      {/* Project Detail Modal - Simplified with enhanced project details */}
+      {/* Project Detail Modal */}
       <AnimatePresence>
         {isModalOpen && selectedProject && (
           <motion.div
@@ -605,7 +637,6 @@ export default function Projects() {
                   </div>
                 </div>
 
-                {/* Additional project details for the new projects */}
                 {selectedProject.scope && (
                   <div className="mb-8">
                     <h4 className="font-bold text-lg mb-2 text-[#1F2937]">
@@ -635,7 +666,6 @@ export default function Projects() {
                   </div>
                 )}
 
-                {/* Project gallery */}
                 <h4 className="font-bold text-lg mb-4 text-[#1F2937]">
                   Project Gallery
                 </h4>
@@ -643,7 +673,8 @@ export default function Projects() {
                   {selectedProject.gallery.map((img, index) => (
                     <div
                       key={index}
-                      className="rounded-xl overflow-hidden h-40 relative"
+                      className="rounded-xl overflow-hidden h-40 relative cursor-pointer group"
+                      onClick={(e) => openFullscreenImage(e, img)}
                     >
                       <Image
                         src={img}
@@ -651,11 +682,28 @@ export default function Projects() {
                         fill
                         className="object-cover hover:scale-105 transition-transform duration-500"
                       />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+                        <div className="bg-white/80 backdrop-blur-sm p-2 rounded-full">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5 text-gray-800"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                            />
+                          </svg>
+                        </div>
+                      </div>
                     </div>
                   ))}
                 </div>
 
-                {/* Testimonial */}
                 <div className="bg-gradient-to-r from-[#4361EE]/10 to-[#7209B7]/10 p-6 rounded-2xl relative">
                   <p className="text-gray-700 italic mb-4">
                     "{selectedProject.testimonial.quote}"
@@ -683,7 +731,68 @@ export default function Projects() {
               </div>
             </motion.div>
           </motion.div>
-        )}{" "}
+        )}
+      </AnimatePresence>
+      {/* Fullscreen Image Modal */}
+      <AnimatePresence>
+        {showFullscreen && fullscreenImage && (
+          <motion.div
+            className="fixed inset-0 bg-black/90 backdrop-blur-sm z-[60] flex items-center justify-center p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            onClick={closeFullscreenImage}
+          >
+            <button
+              onClick={closeFullscreenImage}
+              className="absolute top-6 right-6 z-10 bg-white/80 backdrop-blur-sm w-12 h-12 rounded-full flex items-center justify-center text-gray-800 hover:bg-white transition-colors"
+              aria-label="Close fullscreen image"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+
+            <motion.div
+              className="relative w-full max-w-5xl max-h-[85vh] flex items-center justify-center"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="relative w-full h-auto">
+                <Image
+                  src={fullscreenImage}
+                  alt="Fullscreen image"
+                  width={1200}
+                  height={800}
+                  className="w-full h-auto max-h-[85vh] object-contain rounded-lg shadow-2xl"
+                  unoptimized={true}
+                  onClick={(e) => e.stopPropagation()}
+                />
+              </div>
+
+              <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-4 text-white/80">
+                <div className="bg-black/40 backdrop-blur-sm px-4 py-2 rounded-full text-sm">
+                  Click outside to close
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
       </AnimatePresence>
       {/* Featured Gallery Component */}
       <FeaturedGallery />
